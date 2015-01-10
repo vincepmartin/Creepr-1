@@ -1,0 +1,41 @@
+{
+    "appKeys": {},
+    "capabilities": [
+        "location"
+    ],
+    "companyName": "dlm348@drexel.edu",
+    "longName": "Creep Button",
+    "projectType": "pebblejs",
+    "resources": {
+        "media": [
+            {
+                "file": "images/menu_icon.png",
+                "menuIcon": true,
+                "name": "IMAGE_MENU_ICON",
+                "type": "png"
+            },
+            {
+                "file": "images/logo_splash.png",
+                "name": "IMAGE_LOGO_SPLASH",
+                "type": "png"
+            },
+            {
+                "file": "images/tile_splash.png",
+                "name": "IMAGE_TILE_SPLASH",
+                "type": "png"
+            },
+            {
+                "file": "fonts/UbuntuMono-Regular.ttf",
+                "name": "MONO_FONT_14",
+                "type": "font"
+            }
+        ]
+    },
+    "shortName": "Creep Button",
+    "uuid": "7643db76-bcc3-4191-aee6-5f740494e843",
+    "versionCode": 1,
+    "versionLabel": "0.0",
+    "watchapp": {
+        "watchface": false
+    }
+}
