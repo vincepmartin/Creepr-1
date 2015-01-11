@@ -14,11 +14,18 @@ static GFont s_time_font;
 static InverterLayer *inv_layer;
 static bool Inversion = false;
 
+//Create date text layer
+static TextLayer *date_layer;
+//
+
 
 /*********************** Clockface Functionality ******************************/
 void tick_handler(struct tm *tick_time, TimeUnits units_changed)
 {
   //Allocate long-lived storage (required by TextLayer)
+//Date buffer
+  static char date_buffer[15];
+//
   static char buffer[] = "00:00";
   char timeString[] = "%H:%M:%S";
   if (InDanger) {
@@ -29,7 +36,12 @@ void tick_handler(struct tm *tick_time, TimeUnits units_changed)
   strftime(buffer, sizeof("00:00"), timeString , tick_time);
 
   //Set the TextLayer to display the buffer
-  text_layer_set_text(s_output_layer, buffer);
+text_layer_set_text(s_output_layer, buffer);
+
+//Write & set date TextLayer
+strftime(date_buffer, sizeof(date_buffer), "%b %e %Y", tick_time);
+text_layer_set_text(date_layer, date_buffer);
+//
 }
 
 /******************************* AppMessage ***********************************/
@@ -157,6 +169,12 @@ static void init(void) {
   });
   window_stack_push(s_main_window, true);
 
+//Create date window
+date_layer = text_layer_create(GRect(0, 112, 144, 56));
+text_layer_set_text_alignment(date_layer, GTextAlignmentCenter);
+layer_add_child(window_get_root_layer(s_main_window),text_layer_get_layer(date_layer));
+//
+
   tick_timer_service_subscribe(MINUTE_UNIT, (TickHandler)tick_handler);
   
   //Inverter layer
@@ -170,6 +188,9 @@ static void deinit(void) {
   window_destroy(s_main_window);
   tick_timer_service_unsubscribe();
   inverter_layer_destroy(inv_layer);
+//Destroy date window
+  text_layer_destroy(date_layer);
+//
 }
 
 int main(void) {
