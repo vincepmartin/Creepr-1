@@ -9,12 +9,6 @@
     "resources": {
         "media": [
             {
-		"menuIcon": true,
-                "file": "images/creep.png",
-                "name": "MENU_ICON",
-                "type": "png"
-            },
-            {
                 "characterRegex": "[0-9.:]",
                 "file": "fonts/PressStart2P-Regular.ttf",
                 "name": "PIXEL_FONT_24",
