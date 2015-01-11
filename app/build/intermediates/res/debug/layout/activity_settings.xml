@@ -73,7 +73,28 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:text="some text for the text message" />
+        android:text="Self Call Number" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Self Call Number"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/editTextPanicCall"
+        android:layout_alignRight="@+id/textViewPanicCall"
+        android:layout_alignEnd="@+id/textViewPanicCall"
+        android:layout_marginTop="39dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextSelfCall"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/editTextMessageText"
+        android:layout_alignEnd="@+id/editTextMessageText" />
 
 </RelativeLayout>
 <!-- From: file:/Users/vmartin/Developer/hackathon/android/app/src/main/res/layout/activity_settings.xml -->

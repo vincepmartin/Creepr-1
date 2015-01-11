@@ -138,7 +138,7 @@ public class MainActivity extends Activity {
 				//out.addInt32(KEY_VIBRATE, 0);
 				//PebbleKit.sendDataToPebble(getApplicationContext(), WATCHAPP_UUID, out);
                 //creepr_text_send();
-                creepr_call();
+                //creepr_call();
 			}
 			
 		});
@@ -234,11 +234,10 @@ public class MainActivity extends Activity {
 
     }
 
-    public void creepr_call(){
-        String completeNumberString;
-        
+    public void creepr_call(String numberToCallString){
+
         Intent intent = new Intent(Intent.ACTION_CALL);
-        intent.setData(Uri.parse("tel:18569049398"));
+        intent.setData(Uri.parse("tel:" + numberToCallString));
         startActivity(intent);
 
     }
