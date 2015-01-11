@@ -30,9 +30,9 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Panic Call Number"
         android:id="@+id/textViewPanicCall"
-        android:layout_below="@+id/editTextTextNumber"
+        android:layout_below="@+id/editTextMessageText"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="45dp" />
+        android:layout_marginTop="35dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -41,7 +41,8 @@
         android:ems="10"
         android:id="@+id/editTextPanicCall"
         android:layout_below="@+id/textViewPanicCall"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignLeft="@+id/editTextTextNumber"
+        android:layout_alignStart="@+id/editTextTextNumber" />
 
     <Button
         android:layout_width="wrap_content"
@@ -52,5 +53,27 @@
         android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/textNumberView"
         android:layout_alignStart="@+id/textNumberView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/textView"
+        android:layout_below="@+id/editTextTextNumber"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextMessageText"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:text="some text for the text message" />
+
 </RelativeLayout>
 <!-- From: file:/Users/vmartin/Developer/hackathon/android/app/src/main/res/layout/activity_settings.xml -->

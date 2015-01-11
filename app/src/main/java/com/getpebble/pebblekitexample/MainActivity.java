@@ -11,6 +11,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -36,6 +37,7 @@ public class MainActivity extends Activity {
 	//private static final UUID WATCHAPP_UUID = UUID.fromString("6092637b-8f58-4199-94d8-c606b1e45040");
 
     private static final UUID WATCHAPP_UUID = UUID.fromString("728a5d46-18fb-4e37-bfae-803b7367decd");
+    public static final String MY_PREFS_NAME = "settings";
 
 	private static final int
 		KEY_BUTTON = 0,
@@ -60,6 +62,11 @@ public class MainActivity extends Activity {
 
     private String phoneNumber2 = "18569049398";
     private String message2 = "TOP KEK I'M BEING KIDNAPPED!";
+
+
+    private String messageText1;
+    private String panicNumber;
+    private String callNumber;
 
     /****** The intent for the settings menu. ***********/
     public Intent menuSettingsIntent;
@@ -101,7 +108,11 @@ public class MainActivity extends Activity {
 		ActionBar actionBar = getActionBar();
 		actionBar.setTitle("Creepr");
 		actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.actionbar_orange)));
-		
+
+
+        // Get our settings.
+        getSettings();
+
 		// Add Install Button behavior
 //		Button installButton = (Button)findViewById(R.id.button_install);
 //		installButton.setOnClickListener(new OnClickListener() {
@@ -127,7 +138,7 @@ public class MainActivity extends Activity {
 				//out.addInt32(KEY_VIBRATE, 0);
 				//PebbleKit.sendDataToPebble(getApplicationContext(), WATCHAPP_UUID, out);
                 //creepr_text_send();
-                creepr_call_police();
+                creepr_call();
 			}
 			
 		});
@@ -161,19 +172,19 @@ public class MainActivity extends Activity {
 							public void run() {
 								switch(button) {
 								case OPTION_1:
-                                    Log.v("Creeper","UP BUTTON");
-									whichButtonView.setText("UP");
-                                    creepr_text_send(phoneNumber1,message1);
+                                    Log.v("Creeper","Panic Call");
+									whichButtonView.setText("Call Panic");
+                                    creepr_call(panicNumber);
 									break;
 								case OPTION_2:
-                                    Log.v("Creeper","MIDDLE BUTTON");
-                                    whichButtonView.setText("SELECT");
-                                    creepr_text_send(phoneNumber2,message2);
+                                    Log.v("Creeper","Text Message");
+                                    whichButtonView.setText("Text");
+                                    creepr_text_send(phoneNumber1,messageText1);
 									break;
 								case OPTION_3:
-                                    Log.v("Creeper", "DOWN BUTTON");
-                                    whichButtonView.setText("DOWN");
-                                    creepr_text_send("18569049398","Creeper 3");
+                                    Log.v("Creeper", "Call Myself");
+                                    whichButtonView.setText("Call Myself");
+                                    creepr_call(callNumber);
 
 									break;
 								default:
@@ -207,27 +218,7 @@ public class MainActivity extends Activity {
      * Alternative sideloading method
      * Source: http://forums.getpebble.com/discussion/comment/103733/#Comment_103733 
      */
-    public static void sideloadInstall(Context ctx, String assetFilename) {
-        try {
-            // Read .pbw from assets/
-        	Intent intent = new Intent(Intent.ACTION_VIEW);
-            File file = new File(ctx.getExternalFilesDir(null), assetFilename);
-            InputStream is = ctx.getResources().getAssets().open(assetFilename);
-            OutputStream os = new FileOutputStream(file);
-            byte[] pbw = new byte[is.available()];
-            is.read(pbw);
-            os.write(pbw);
-            is.close();
-            os.close();
-             
-            // Install via Pebble Android app
-            intent.setDataAndType(Uri.fromFile(file), "application/pbw");
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            ctx.startActivity(intent);
-        } catch (IOException e) {
-            Toast.makeText(ctx, "App install failed: " + e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
-        }
-    }
+
 
     public void creepr_text_send(String numberToSendTextTo,String messageToSendInText){
         //Hatricks # 8569049398
@@ -243,10 +234,39 @@ public class MainActivity extends Activity {
 
     }
 
-    public void creepr_call_police(){
+    public void creepr_call(){
+        String completeNumberString;
+        
         Intent intent = new Intent(Intent.ACTION_CALL);
         intent.setData(Uri.parse("tel:18569049398"));
         startActivity(intent);
+
+    }
+
+    public void getSettings(){
+        SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+        phoneNumber1 = prefs.getString("phoneNumber1", "Enter a Number.");
+        messageText1 = prefs.getString("message1", "Enter a Message.");
+        panicNumber = prefs.getString("panicNumber", "Enter a Number.");
+        callNumber = prefs.getString("callNumber", "Enter a Number.");
+
+        Log.v("read setings","just read the settings");
+        logOutStrings();
+
+        //write the settings you grabbed to the EditText objects.
+        //editTextPhoneNumber1.setText(phoneNumber1);
+        //editTextPanicNumber.setText(panicNumber);
+        //editTextMessageText1.setText(messageText1);
+
+
+
+    }
+
+    public void logOutStrings(){
+        Log.v("String Settings: Phone 1:", phoneNumber1);
+        Log.v("String Settings: Panic Number:",panicNumber);
+        Log.v("String Settings: Message Text:",messageText1);
+        Log.v("String Settings: Call Self Number:", callNumber);
 
     }
 
