@@ -13,7 +13,13 @@
                 "file": "fonts/PressStart2P-Regular.ttf",
                 "name": "PIXEL_FONT_24",
                 "type": "font"
-            }
+            },
+	    {
+		"menuIcon": true,
+		"type": "png",
+		"name": "MENU_ICON",
+		"file": "images/creep.png"
+	    },
         ]
     },
     "shortName": "Creepr",
