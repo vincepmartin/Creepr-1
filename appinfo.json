@@ -19,7 +19,7 @@
 		"type": "png",
 		"name": "MENU_ICON",
 		"file": "images/creep.png"
-	    },
+	    }
         ]
     },
     "shortName": "Creepr",
