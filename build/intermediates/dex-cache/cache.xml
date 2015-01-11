@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/vmartin/Developer/hackathon/android/app/build/intermediates/exploded-aar/com.getpebble/pebblekit/2.6.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="660dc1d342b8e31da1cc51e79c66d636a77a1e98">
+        <dex dex="/Users/vmartin/Developer/hackathon/android/app/build/intermediates/pre-dexed/debug/classes-cf11aa0d9acd9d02d211e77b1002b3f11fe7cf98.jar" />
+    </item>
+    <item
+        jar="/Users/vmartin/Applications/adt-bundle-mac-x86_64-20140702/sdk/extras/android/m2repository/com/android/support/support-v4/19.1.0/support-v4-19.1.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67">
+        <dex dex="/Users/vmartin/Developer/hackathon/android/app/build/intermediates/pre-dexed/debug/support-v4-19.1.0-bc52a6095cbd5ddc9c08336940dc7e7fcf6ddfa6.jar" />
+    </item>
+
+</items>
