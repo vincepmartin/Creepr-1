@@ -128,20 +128,20 @@ public class MainActivity extends Activity {
 
 		// Add vibrate Button behavior
 
-        Button vibrateButton = (Button)findViewById(R.id.button_vibrate);
-		vibrateButton.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// Send KEY_VIBRATE to Pebble
-				//PebbleDictionary out = new PebbleDictionary();
-				//out.addInt32(KEY_VIBRATE, 0);
-				//PebbleKit.sendDataToPebble(getApplicationContext(), WATCHAPP_UUID, out);
-                //creepr_text_send();
-                //creepr_call();
-			}
-			
-		});
+//        Button vibrateButton = (Button)findViewById(R.id.button_vibrate);
+//		vibrateButton.setOnClickListener(new OnClickListener() {
+//
+//			@Override
+//			public void onClick(View v) {
+//				// Send KEY_VIBRATE to Pebble
+//				//PebbleDictionary out = new PebbleDictionary();
+//				//out.addInt32(KEY_VIBRATE, 0);
+//				//PebbleKit.sendDataToPebble(getApplicationContext(), WATCHAPP_UUID, out);
+//                //creepr_text_send();
+//                //creepr_call();
+//			}
+//
+//		});
 		
 		// Add output TextView behavior
 		whichButtonView = (TextView)findViewById(R.id.which_button);
