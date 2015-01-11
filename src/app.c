@@ -12,6 +12,7 @@ static TextLayer *s_output_layer;
 static bool InDanger = false;
 static GFont s_time_font;
 static InverterLayer *inv_layer;
+static bool Inversion = false;
 
 
 /*********************** Clockface Functionality ******************************/
@@ -83,19 +84,31 @@ static void outbox_sent_handler(DictionaryIterator *iterator, void *context) {
 //
 /********************************* Buttons ************************************/
 
-static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
+static void toggleInvert() {
+  if (Inversion) {
+    inverter_layer_destroy(inv_layer);
+    inv_layer = 0;
+  }
+  else {
+    inv_layer = inverter_layer_create(GRect(0, 0, 180, 180));
+    layer_add_child(window_get_root_layer(s_main_window), (Layer*) inv_layer);
+  }
+  Inversion = !Inversion;
+}
 
+static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
   send(KEY_BUTTON, BUTTON_SELECT);
+  toggleInvert();
 }
 
 static void up_click_handler(ClickRecognizerRef recognizer, void *context) {
-
   send(KEY_BUTTON, BUTTON_UP);
+  toggleInvert();
 }
 
 static void down_click_handler(ClickRecognizerRef recognizer, void *context) {
-
   send(KEY_BUTTON, BUTTON_DOWN);
+  toggleInvert();
 }
 
 static void click_config_provider(void *context) {
@@ -144,7 +157,7 @@ static void init(void) {
   });
   window_stack_push(s_main_window, true);
 
-  tick_timer_service_subscribe(SECOND_UNIT, (TickHandler)tick_handler);
+  tick_timer_service_subscribe(MINUTE_UNIT, (TickHandler)tick_handler);
   
   //Inverter layer
   inv_layer = inverter_layer_create(GRect(0, 0, 180, 180));
