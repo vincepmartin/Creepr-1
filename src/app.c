@@ -8,16 +8,24 @@
 #define BUTTON_DOWN   2
 
 static Window *s_main_window;
-static TextLayer *s_output_layer; 
+static TextLayer *s_output_layer;
+static bool InDanger = false;
+static GFont s_time_font;
+static InverterLayer *inv_layer;
+
 
 /*********************** Clockface Functionality ******************************/
 void tick_handler(struct tm *tick_time, TimeUnits units_changed)
 {
   //Allocate long-lived storage (required by TextLayer)
   static char buffer[] = "00:00";
+  char timeString[] = "%H:%M:%S";
+  if (InDanger) {
+    strcpy(timeString, "%H.%M.%S");
+  }
 
   //Write the time to the buffer in a safe manner
-  strftime(buffer, sizeof("00:00"), "%H:%M", tick_time);
+  strftime(buffer, sizeof("00:00"), timeString , tick_time);
 
   //Set the TextLayer to display the buffer
   text_layer_set_text(s_output_layer, buffer);
@@ -103,8 +111,9 @@ static void main_window_load(Window *window) {
   Layer *window_layer = window_get_root_layer(window);
   GRect window_bounds = layer_get_bounds(window_layer);
   // Create main TextLayer
-  s_output_layer = text_layer_create(GRect(5, 0, window_bounds.size.w - 10, window_bounds.size.h));
-  text_layer_set_font(s_output_layer, fonts_get_system_font(FONT_KEY_BITHAM_42_LIGHT));
+  s_time_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_PIXEL_FONT_24));
+  s_output_layer = text_layer_create(GRect(5, 50, window_bounds.size.w - 10, window_bounds.size.h));
+  text_layer_set_font(s_output_layer, s_time_font);
   text_layer_set_overflow_mode(s_output_layer, GTextOverflowModeWordWrap);
 
   text_layer_set_text_alignment(s_output_layer, GTextAlignmentCenter);
@@ -135,8 +144,11 @@ static void init(void) {
   });
   window_stack_push(s_main_window, true);
 
-  tick_timer_service_subscribe(MINUTE_UNIT, (TickHandler)tick_handler);
-
+  tick_timer_service_subscribe(SECOND_UNIT, (TickHandler)tick_handler);
+  
+  //Inverter layer
+  inv_layer = inverter_layer_create(GRect(0, 0, 180, 180));
+  layer_add_child(window_get_root_layer(s_main_window), (Layer*) inv_layer);
 }
 
 
@@ -144,6 +156,7 @@ static void deinit(void) {
   // Destroy main Window
   window_destroy(s_main_window);
   tick_timer_service_unsubscribe();
+  inverter_layer_destroy(inv_layer);
 }
 
 int main(void) {

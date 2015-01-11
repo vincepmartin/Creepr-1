@@ -4,12 +4,19 @@
         ""
     ],
     "companyName": "dlm348@drexel.edu",
-    "longName": "Creeper",
+    "longName": "Creepr",
     "projectType": "native",
     "resources": {
-        "media": []
+        "media": [
+            {
+                "characterRegex": "[0-9.:]",
+                "file": "fonts/PressStart2P-Regular.ttf",
+                "name": "PIXEL_FONT_24",
+                "type": "font"
+            }
+        ]
     },
-    "shortName": "Creeper",
+    "shortName": "Creepr",
     "uuid": "45da9aaa-b10a-438b-8ed3-5d8878e2bf48",
     "versionCode": 1,
     "versionLabel": "1.0",
