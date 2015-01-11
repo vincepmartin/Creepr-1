@@ -1,0 +1,50 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/actionbar_orange"
+    android:clipToPadding="false"
+    android:fitsSystemWindows="true"
+    tools:context="com.getpebble.pebblekitexample.MainActivity" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#FFFFFF" >
+
+        <TextView
+            android:id="@+id/press_a_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Activity Detected"
+            android:textColor="#AAAAAA"
+            android:textSize="25sp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:id="@+id/which_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/press_a_button"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="None yet"
+            android:textColor="#AAAAAA"
+            android:textSize="30sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="creepr"
+            android:id="@+id/textView3"
+            android:textSize="100dp"
+            android:layout_below="@+id/which_button"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="71dp" />
+
+    </RelativeLayout>
+
+</LinearLayout><!-- From: file:/Users/vmartin/Developer/hackathon/android/app/src/main/res/layout/activity_main.xml -->
