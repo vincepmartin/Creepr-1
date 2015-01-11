@@ -9,6 +9,7 @@
     "resources": {
         "media": [
             {
+		"menuIcon": true,
                 "file": "images/creep.png",
                 "name": "MENU_ICON",
                 "type": "png"
