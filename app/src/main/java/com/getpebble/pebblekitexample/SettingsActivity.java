@@ -37,6 +37,9 @@ public class SettingsActivity extends Activity {
         editor.putString("message1", messageText1);
         editor.putString("message2", messageText2);
         editor.commit();
+        Log.v("write setings","just wrote the settings");
+        logOutStrings();
+
     }
 
     public void getSettings(){
@@ -45,6 +48,9 @@ public class SettingsActivity extends Activity {
         phoneNumber2 = prefs.getString("phoneNumber2", "No number defined");
         messageText1 = prefs.getString("message1", "Enter a message.");
         messageText2 = prefs.getString("message2", "Enter a message.");
+        Log.v("read setings","just wrote the settings");
+        logOutStrings();
+
 
     }
 
