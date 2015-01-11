@@ -1,13 +1,19 @@
 {
     "appKeys": {},
     "capabilities": [
-        ""
+        "location"
     ],
     "companyName": "dlm348@drexel.edu",
     "longName": "Creepr",
     "projectType": "native",
     "resources": {
         "media": [
+            {
+                "file": "images/creep.png",
+                "menuIcon": true,
+                "name": "MENU_ICON",
+                "type": "png"
+            },
             {
                 "characterRegex": "[0-9.:]",
                 "file": "fonts/PressStart2P-Regular.ttf",
@@ -17,9 +23,9 @@
         ]
     },
     "shortName": "Creepr",
-    "uuid": "45da9aaa-b10a-438b-8ed3-5d8878e2bf48",
+    "uuid": "728a5d46-18fb-4e37-bfae-803b7367decd",
     "versionCode": 1,
-    "versionLabel": "1.0",
+    "versionLabel": "0.1",
     "watchapp": {
         "watchface": false
     }
