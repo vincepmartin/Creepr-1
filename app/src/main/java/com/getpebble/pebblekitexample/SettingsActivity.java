@@ -75,6 +75,7 @@ public class SettingsActivity extends Activity {
         editor.putString("phoneNumber1", phoneNumber1);
         editor.putString("message1", messageText1);
         editor.putString("panicNumber", panicNumber);
+        editor.putString("callNumber", callNumber);
         editor.commit();
         Log.v("write setings","just wrote the settings");
         logOutStrings();

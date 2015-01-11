@@ -150,7 +150,10 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		
+
+        //Grab the settings.
+        getSettings();
+
 		// Define AppMessage behavior
 		if(appMessageReciever == null) {
 			appMessageReciever = new PebbleDataReceiver(WATCHAPP_UUID) {
@@ -249,7 +252,7 @@ public class MainActivity extends Activity {
         panicNumber = prefs.getString("panicNumber", "Enter a Number.");
         callNumber = prefs.getString("callNumber", "Enter a Number.");
 
-        Log.v("read setings","just read the settings");
+        Log.v("read settings","just read the settings");
         logOutStrings();
 
         //write the settings you grabbed to the EditText objects.

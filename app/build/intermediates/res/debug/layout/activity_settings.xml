@@ -58,7 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
+        android:text="Text Message To Send"
         android:id="@+id/textView"
         android:layout_below="@+id/editTextTextNumber"
         android:layout_centerHorizontal="true"
@@ -72,8 +72,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:text="Self Call Number" />
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -94,7 +93,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/editTextMessageText"
-        android:layout_alignEnd="@+id/editTextMessageText" />
+        android:layout_alignEnd="@+id/editTextMessageText"
+        android:inputType="phone" />
 
 </RelativeLayout>
 <!-- From: file:/Users/vmartin/Developer/hackathon/android/app/src/main/res/layout/activity_settings.xml -->
